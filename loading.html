@@ -1,0 +1,56 @@
+<style>
+div {
+ float:left;
+ padding: 10px;
+}
+</style>
+
+<div>
+ <form>
+    <center>
+    <p>
+      <label>Name:</label>
+      <input id='name' type="text"/>
+    </p>
+    <p>
+      <input type="button" value="Loading 1"
+         onclick="loadFunction(this,'loading1');" />
+      <input type="button" value="Loading 2"
+         onclick="loadFunction(this,'loading2');" />
+      <input type="button" value="Loading 3"
+         onclick="loadFunction(this,'loading3');" />
+    </p>
+    <img id="loading1" src="wait.gif" style="display:none"/>
+    </center>
+ </form>
+</div>
+
+<div id="loading2"
+  style="top:50%; left:50%;
+    width:80px; height:50px;
+    margin-left: -40px; margin-top: -25px;
+    display:none; position:fixed" >
+  <img src="wait.gif"/>
+</div>
+
+<div id="loading3" 
+  style="margin-top:40px; display:none;" >
+  <img src="wait.gif"/>
+</div>
+
+
+
+<script>
+function loadFunction(button,loadingDiv) {
+  valButton = button.value
+  button.value = "Aguarde...";
+  button.disabled = true;
+  e = document.getElementById(loadingDiv);
+  e.style.display="block";
+  setTimeout(function() {
+    e.style.display='none';
+    button.value = valButton;
+    button.disabled = false;
+  },2000);
+}
+</script>
